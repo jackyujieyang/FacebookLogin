@@ -6,61 +6,64 @@
   <!-- Libraries -->
   <script src="js/lib/jquery-1.11.0.min.js"></script>
   <script src="js/lib/underscore-min.js"></script>
-  <script src="js/lib/parse-1.2.18.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+<!--
+<script src="js/lib/parse-1.2.18.min.js"></script>
+-->
 </head>
 <body>
-<div id="fb-root"></div>
-<script>
+  <div id="fb-root"></div>
+  <script>
   Parse.initialize("radsS7jr6tenBqv3l2OSwIHFDcmoZyehhPC8qSY8", "ULiZgc7Q7a0sRsp5hMuWvUNaGy6jI6X9rpMCk0ac");
   window.fbAsyncInit = function() {
-  Parse.FacebookUtils.init({
-    appId      : '229856690536284',
-    cookie     : true, // enable cookies to allow the server to access the session
-    xfbml      : true  // parse XFBML
-  });
-
-  if(Parse.User.current()) {
-    console.log("the user is currently logged in. We're logging you out");
-    Parse.User.logOut();
-    if(!Parse.User.current()) {
-      console.log("You're successfully logged out");
-    } else {
-      console.log("There's an error logging you out");
-    }
-  } else {
-    console.log("There's no user currently logged in. We're calling Facebook to log you in");
-    Parse.FacebookUtils.logIn("user_likes,email", {
-      success: function(user) {
-        if (!user.existed()) {
-          console.log("User signed up and logged in through Facebook!");
-        } else {
-          console.log("User logged in through Facebook!");
-        }
-        user.set("email", "jackyujieyang@gmail.com");
-        user.save(null, {
-          success: function(user) {
-            console.log("email successfully saved!");
-          },
-          error: function(user, error) {
-            console.log("The error is: " + error);
-          }
-        });
-      },
-      error: function(user, error) {
-        console.log("User cancelled the Facebook login or did not fully authorize.");
-      }
+    Parse.FacebookUtils.init({
+      appId      : '229856690536284',
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
     });
-  }
+
+    if(Parse.User.current()) {
+      console.log("the user is currently logged in. We're logging you out");
+      Parse.User.logOut();
+      if(!Parse.User.current()) {
+        console.log("You're successfully logged out");
+      } else {
+        console.log("There's an error logging you out");
+      }
+    } else {
+      console.log("There's no user currently logged in. We're calling Facebook to log you in");
+      Parse.FacebookUtils.logIn("user_likes,email", {
+        success: function(user) {
+          if (!user.existed()) {
+            console.log("User signed up and logged in through Facebook!");
+          } else {
+            console.log("User logged in through Facebook!");
+          }
+          user.set("email", "jackyujieyang@gmail.com");
+          user.save(null, {
+            success: function(user) {
+              console.log("email successfully saved!");
+            },
+            error: function(user, error) {
+              console.log("The error is: " + error);
+            }
+          });
+        },
+        error: function(user, error) {
+          console.log("User cancelled the Facebook login or did not fully authorize.");
+        }
+      });
+    }
   };
 
-  // Load the SDK asynchronously
-  (function(d){
-   var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-   if (d.getElementById(id)) {return;}
-   js = d.createElement('script'); js.id = id; js.async = true;
-   js.src = "//connect.facebook.net/en_US/all.js";
-   ref.parentNode.insertBefore(js, ref);
-  }(document));
+// Load the SDK asynchronously
+(function(d){
+ var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+ if (d.getElementById(id)) {return;}
+ js = d.createElement('script'); js.id = id; js.async = true;
+ js.src = "//connect.facebook.net/en_US/all.js";
+ ref.parentNode.insertBefore(js, ref);
+}(document));
 
 </script>
 <body>
