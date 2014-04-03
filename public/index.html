@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Facebook Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+	<!-- Libraries -->
+	<script src="js/lib/respond.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="js/lib/underscore-min.js"></script>
+  <script src="js/lib/parse-1.2.18.min.js"></script>
+
+</head>
+<body>
+    <div id="fb-root"></div>
+ 
+        <script>
+        Parse.initialize("ygllhC3rTkJ6tXIVmYSjeoyFX5f3qzgt6l1zHko6", "mnkxvrJwTcSkgxm492Aa41LoUlLuoKavX6vq403K");
+
+        window.fbAsyncInit = function() {
+                Parse.FacebookUtils.init({
+                appId: '772451966098433',
+                //status: true,
+                cookie: true,
+                xfbml: true
+            });
+        };
+ 
+        // Load the SDK asynchronously
+        (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+        }(document));
+ 
+        function login() {
+Parse.FacebookUtils.logIn("email", {
+  success: function(user) {
+    if (!user.existed()) {
+      alert("User signed up and logged in through Facebook!");
+    } else {
+      alert("User logged in through Facebook!");
+    }
+  },
+  error: function(user, error) {
+    alert("User cancelled the Facebook login or did not fully authorize.");
+  }
+});           
+        }
+ 
+        function logout() {
+            Parse.User.logOut(function(response) {
+              console.log("You just logged out of Facebook!");
+            });
+        }
+ 
+        var status = Parse.User.current();
+ 
+        console.log(status);
+ 
+        </script>
+ 
+        <button onclick="javascript:login();">Login Facebook</button>
+ 
+        <br>
+ 
+        <button onclick="javascript:logout();">Logout from Facebook</button>
+
+</body>
+</html>

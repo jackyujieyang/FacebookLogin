@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "FacebookLogin": {
+            "applicationId": "radsS7jr6tenBqv3l2OSwIHFDcmoZyehhPC8qSY8", 
+            "masterKey": "75SUuY7VyrR3rNWFJZ4BnAdZ6tIRXsXjLkPm6JR1"
+        }, 
+        "_default": {
+            "link": "FacebookLogin"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.2.18"
+    }
+}
